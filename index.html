@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe</title>
+  <!-- <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css"> -->
+  <link rel="stylesheet" href="css/app.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <header>
+    <div class="header-buttons reset-button">
+      <button class="reset-game"></button>
+    </div>
+    <div class="header-buttons display">
+      <div class="display-message">LET'S PLAY!</div>
+    </div>
+    <div class="header-buttons reset-button">
+      <button class="reset-game"></button>
+    </div>
+  </header>
+
+
+  <!-- <div class="row game-board">
+    <div class="small-1 medium-2 large-3 columns">
+    </div>
+    <div class="small-10 medium-8 large-6 columns">
+      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
+        <li><button class="box top left" data-index="0" id="0"></button></li>
+        <li><button class="box top center" data-index="1" id="1"></button></li>
+        <li><button class="box top right" data-index="2" id="2"></button></li>
+      </ul>
+
+      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
+        <li><button class="box middle left" data-index="3" id="3"></button></li>
+        <li><button class="box middle center" data-index="4" id="4"></button></li>
+        <li><button class="box middle right" data-index="5" id="5"></button></li>
+      </ul>
+
+      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
+        <li><button class="box bottom left" data-index="6" id="6"></button></li>
+        <li><button class="box bottom center" data-index="7" id="7"></button></li>
+        <li><button class="box bottom right" data-index="8" id="8"></button></li>
+      </ul>
+    </div>
+    <div class="small-1 medium-2 large-3 columns">
+    </div>
+  </div> -->
+
+
+      <!-- <div class="box top left" data-index="0" id="0"></div>
+      <div class="box top center" data-index="1" id="1"></div>
+      <div class="box top right" data-index="2" id="2"></div>
+      <div class="box middle left" data-index="3" id="3"></div>
+      <div class="box middle center" data-index="4" id="4"></div>
+      <div class="box middle right" data-index="5" id="5"></div>
+      <div class="box bottom left" data-index="6" id="6"></div>
+      <div class="box bottom center" data-index="7" id="7"></div>
+      <div class="box bottom right" data-index="8" id="8"></div> -->
+
+
+  <div class="game-board">
+    <div class="grid">
+      <button class="box top left" data-index="0" id="0"></button>
+      <button class="box top center" data-index="1" id="1"></button>
+      <button class="box top right" data-index="2" id="2"></button>
+      <button class="box middle left" data-index="3" id="3"></button>
+      <button class="box middle center" data-index="4" id="4"></button>
+      <button class="box middle right" data-index="5" id="5"></button>
+      <button class="box bottom left" data-index="6" id="6"></button>
+      <button class="box bottom center" data-index="7" id="7"></button>
+      <button class="box bottom right" data-index="8" id="8"></button>
+    </div>
+  </div>
+
+  <div class="notifications">
+    <div class="players player1">PLAYER 1
+      <div class="player1-score scores"></div>
+    </div>
+
+    <div class="tie">TIE
+      <div class="tie-score scores"></div>
+    </div>
+
+    <div class="players player2">PLAYER 2
+      <div class="player2-score scores"></div>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

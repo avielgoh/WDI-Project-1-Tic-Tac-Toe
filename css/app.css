@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  max-width: 95%;
+  margin: 0 auto;
+  font-family: Roboto;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.game-board {
+  /*border: 1px solid deeppink;*/
+  max-width: 390px;
+  height: 390px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3%;
+}
+
+button.box {
+  float: left;
+  display: inline-block;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: deeppink;
+  font-size: 5em;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.box {
+  width: 129px;
+  height: 129px;
+}
+
+.top.left {
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.top.center {
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.top.right {
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.middle.left {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  border-right: 2px solid white
+}
+
+.middle.center {
+  border: 2px solid white;
+}
+
+.middle.right {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  border-left: 2px solid white
+}
+
+.bottom.left {
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.bottom.center {
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.bottom.right {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.notifications {
+  /*background-color: deeppink;*/
+  display: inline-block;
+  width: 390px;
+  position: relative;
+  margin-top: 3%;
+  font-size: 1.2em;
+}
+
+.players, .tie {
+  float: left;
+}
+
+.players {
+  width: 32.5%;
+  position: relative;
+}
+
+.tie {
+  width: 35%;
+}
+
+.scores {
+  font-size: 2em;
+  color: deeppink;
+}
+
+header {
+  display: inline-block;
+  width: 390px;
+  margin-top: 1.5%;
+  font-size: 2.2em;
+}
+
+.header-buttons {
+  float: left;
+}
+
+.reset-button {
+  width: 10%;
+}
+
+.display {
+  width: 80%;
+}
+
+.reset-game {
+  text-align: center;
+  vertical-align: top;
+  padding: 6px 6px;
+  border: 2px solid white;
+  border-radius: 100px;
+  background: black;
+  font: normal normal bold 18px arial;
+}
+
+.reset-game:hover {
+  background-color: white;
+  transform: scale(0.9);
+  transition: all .3s ease-in-out;
+}
+
+.reset-game:active {
+  background: deeppink;
+}
+
+.reset-game:before{
+  content:  "\0000a0";
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAC8ElEQVRIiZ3VT2hcVRQG8N9JQxtK5lFBRN+84N+FC6kgLgqKtNGiIIgoaEHQTV0IRXElLqS4KiJSClW6EYrYUlRcuLELFyKKiqUUKbUWKWrue2pxUWaKhJDkupiXkCZjmPGs7r1z5vvu+d537gkjRLdbTkfYhZ24E2XmF/wcnBF+THPN8rD/xubAt2yPiCfxCu7K7Agm1qQs4gq+xjvksyn9sTgSQVWV03ibvJ+YHKHQP/E68UFK9Wo1W/4DvMQpPEOsvfFVXMpZHaGPzhqMaTyGbUXR+abX6y/BhptVVbkdBzGbZTEossHxzMfB3xGWsRW34VXMYjozFbyMn3CSIRJVVfkUTmCqPbqIF3AmpY0fststt0bYj7faKuAS9qTUNNdJVFXljXgvc2vLfDlHPFKn5kKv188bxaTf7y/1ev0fiqJTY29b2Q1Y7vX6X0ysy9+FnS34fOa1eq7+fRjwkDiFj9r1BPZVM91iPcFerTSZM7JPRwSXUrOAd7N8pT26Wc4PrhJUM92pzO52uxycqOvhzbNJnA9xtl1vzTywparKw0XReR7P4r5gW2YpmC6KzqNF0bmnKDrfrthus+j1+ktF0bndwFWCvyYzvwUHMLliqRjYd7bdPh0RC2NU8evKImc7JoOj2JN5Yp1nl3E8pWbk7wCZ+dWLBhMpNYs4GKx3y2WDhhsrgjvW+HlhAlJqzuEIVqSYx5spNWlcAvK9a5S4tOqiiDiGzwykOZlS8+G40FVV3p1zPNRuFzPfrxLMzdX/5OwQTuPQuODdmXISzxnMCrgafHXdYxeRzxEvptQ04xIE92N/xOq8OJ1S02w6cEaN7kw5K3s/Bq8rgyH0cErN+VEGyYaoqnIiMx3clOV9speCsv15AYdxgSHzYATwKRyIQe/sDFGtSzmVs6Mrz8zYBHnQ8Y/nbHdcL/A8jmXxRl3X11YO/5dE2aBLcybCfB4MpSNy/qSum2trc8cmCJYzCd9FuIjPgy9Taq4My/8XJ6cHTtsfrMwAAAAASUVORK5CYII=") no-repeat left center transparent;
+  background-size: 100% 100%;
+}
