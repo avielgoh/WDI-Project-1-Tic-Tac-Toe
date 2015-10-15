@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Tic Tac Toe</title>
-  <!-- <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/foundation.css"> -->
-  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/app.css">
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand:700,400' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
   <div class="landing">
     <div class="landing-box">
-      <input type="text" class="name-input" id="player1-name" placeholder="Player 1"> <br>
-      <input type="text" class="name-input" id="player2-name" placeholder="Player 2"> <br>
+      <input type="text" class="name-input" id="player1-name" maxlength="10" placeholder="Player 1"> <br>
+      <input type="text" class="name-input" id="player2-name" maxlength="10" placeholder="Player 2"> <br>
       <button class="landing-buttons submit">Submit</button>
       <button class="landing-buttons skip">Skip</button>
     </div>
@@ -22,93 +22,54 @@
 
 <main>
   <header>
-    <div class="header-buttons reset-button">
-      <button class="reset-game"></button>
+    <div class="header header-buttons" id="reset">
+      <i class="fa fa-undo"></i>
     </div>
-    <div class="header-buttons display">
+    <div class="header display">
       <div class="display-message">Let's play!</div>
     </div>
-    <div class="header-buttons reset-button">
-      <button class="reset-game" id="exit"></button>
+    <div class="header header-buttons" id="exit">
+      <i class="fa fa-eject"></i>
     </div>
   </header>
 
 
-
-
-  <!-- <div class="row game-board">
-    <div class="small-1 medium-2 large-3 columns">
-    </div>
-    <div class="small-10 medium-8 large-6 columns">
-      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
-        <li><button class="box top left" data-index="0" id="0"></button></li>
-        <li><button class="box top center" data-index="1" id="1"></button></li>
-        <li><button class="box top right" data-index="2" id="2"></button></li>
-      </ul>
-
-      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
-        <li><button class="box middle left" data-index="3" id="3"></button></li>
-        <li><button class="box middle center" data-index="4" id="4"></button></li>
-        <li><button class="box middle right" data-index="5" id="5"></button></li>
-      </ul>
-
-      <ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3">
-        <li><button class="box bottom left" data-index="6" id="6"></button></li>
-        <li><button class="box bottom center" data-index="7" id="7"></button></li>
-        <li><button class="box bottom right" data-index="8" id="8"></button></li>
-      </ul>
-    </div>
-    <div class="small-1 medium-2 large-3 columns">
-    </div>
-  </div> -->
-
-
-      <!-- <div class="box top left" data-index="0" id="0"></div>
-      <div class="box top center" data-index="1" id="1"></div>
-      <div class="box top right" data-index="2" id="2"></div>
-      <div class="box middle left" data-index="3" id="3"></div>
-      <div class="box middle center" data-index="4" id="4"></div>
-      <div class="box middle right" data-index="5" id="5"></div>
-      <div class="box bottom left" data-index="6" id="6"></div>
-      <div class="box bottom center" data-index="7" id="7"></div>
-      <div class="box bottom right" data-index="8" id="8"></div> -->
-
-
   <div class="game-board">
     <div class="grid">
-      <button class="box top left" data-index="0" id="0"></button>
-      <button class="box top center" data-index="1" id="1"></button>
-      <button class="box top right" data-index="2" id="2"></button>
-      <button class="box middle left" data-index="3" id="3"></button>
-      <button class="box middle center" data-index="4" id="4"></button>
-      <button class="box middle right" data-index="5" id="5"></button>
-      <button class="box bottom left" data-index="6" id="6"></button>
-      <button class="box bottom center" data-index="7" id="7"></button>
-      <button class="box bottom right" data-index="8" id="8"></button>
+      <button class="box top left" data-index="0" id="0"><span class="boxDisplay"></span></button>
+      <button class="box top center" data-index="1" id="1"><span class="boxDisplay"></span></button>
+      <button class="box top right" data-index="2" id="2"><span class="boxDisplay"></span></button>
+      <button class="box middle left" data-index="3" id="3"><span class="boxDisplay"></span></button>
+      <button class="box middle center" data-index="4" id="4"><span class="boxDisplay"></span></button>
+      <button class="box middle right" data-index="5" id="5"><span class="boxDisplay"></span></button>
+      <button class="box bottom left" data-index="6" id="6"><span class="boxDisplay"></span></button>
+      <button class="box bottom center" data-index="7" id="7"><span class="boxDisplay"></span></button>
+      <button class="box bottom right" data-index="8" id="8"><span class="boxDisplay"></span></button>
     </div>
   </div>
 
   <div class="notifications">
-    <div class="players player1"><span id="p1Name">PLAYER 1</span>
+    <div class="players player1"><span id="p1Name">Player 1</span>
       <div class="player1-score scores"></div>
     </div>
 
-    <div class="tie">TIE
+    <div class="tie">Tie
       <div class="tie-score scores"></div>
     </div>
 
-    <div class="players player2"><span id="p2Name">PLAYER 2</span>
+    <div class="players player2"><span id="p2Name">Player 2</span>
       <div class="player2-score scores"></div>
     </div>
   </div>
 </main>
 
-<div class="exit">
-  <div class="exit-box">
-    <p>Thanks for playing!</p>
-    <button class="exit-button replay">PLAY AGAIN?</button>
+  <div class="game-over">
+    <div class="exit-box">
+      <div class="thanks-message">Thanks for playing!</div>
+      <button class="crazy-button replay">Feeling crazy?</button>
+      <div class="winner-message"></div>
+    </div>
   </div>
-</div>
 
   <script src="js/jquery.js"></script>
   <script src="js/underscore.js"></script>
