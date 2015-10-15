@@ -4,10 +4,35 @@
 var ties = 0;
 var player1Score = 0;
 var player2Score = 0;
+var player1Name = 'Player 1';
+var player2Name = 'Player 2';
 var inputType = 'X';
 var boardXWin = ["X", "X", "X"];
 var boardOWin = ["O", "O", "O"];
 var winningSet = [];
+
+// --- START GAME ---
+var startGame = function() {
+  if ($('#player1-name').val() !== "" &&  $('#player2-name').val() !== "") {
+    player1Name = $('#player1-name').val();
+    $('#p1Name').html(player1Name);
+    player2Name = $('#player2-name').val();
+    $('#p2Name').html(player2Name);
+  } else {
+    return;
+  }
+
+  // display main page, remove landing box
+  $('.landing').css('display', 'none');
+  $('main').css('display', 'inherit');
+}
+
+$('.submit').on('click', startGame); // start game after use inputs custom names
+
+$('.skip').on('click', function() { // user can choose not to use custom name
+  $('.landing').css('display', 'none');
+  $('main').css('display', 'inherit');
+});
 
 // --- GAME BOARD ---
 var board = {
@@ -128,15 +153,16 @@ $('.reset-game').on('click', resetGame); // calls resetGame() when button is cli
 // --- GAME RESULTS ---
 var winnerX = function() {
   $('.box').prop('disabled', true);
-  $('.display-message').html('X WINS!');
+  $('.display-message').html(player1Name +' WINS!');
   player1Score += 1;
+  console.log(player1Score);
   $('.player1-score').html(player1Score);
   setTimeout(clearBoard, 2000);
 }
 
 var winnerO = function() {
   $('.box').prop('disabled', true);
-  $('.display-message').html('O WINS!');
+  $('.display-message').html(player2Name + ' WINS!');
   player2Score += 1;
   $('.player2-score').html(player2Score);
   setTimeout(clearBoard, 2000);
@@ -149,3 +175,26 @@ var winnerTie = function() {
   $('.tie-score').html(ties);
   setTimeout(clearBoard, 2000);
 }
+
+// --- END & REPLAY GAME  ---
+var exitGame = function() {
+  $('.exit').css('display', 'inherit');
+  $('main').css('display', 'none');
+  $('.landing').css('display', 'none');
+}
+
+$('#exit').on('click', exitGame); // user exits game - display exit box
+
+var replayGame = function() {
+  $('.exit').css('display', 'none');
+  $('.landing').css('display', 'inherit');
+  resetGame();
+  player1Name = 'Player 1';
+  player2Name = 'Player 2';
+  $('#p1Name').html(player1Name);
+  $('#p2Name').html(player2Name);
+  $('#player1-name').val('');
+  $('#player2-name').val('');
+}
+
+$('.replay').on('click', replayGame); // user can replay gain - display landing box

@@ -13,13 +13,88 @@ body {
   overflow: hidden;
 }
 
+.landing {
+  border: 1px solid white;
+  background-color: transparent;
+  display: relative;
+  max-width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10%;
+}
+
+.exit {
+  border: 1px solid white;
+  background-color: transparent;
+  display: none;
+  max-width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10%;
+  font-size: 3em;
+}
+
+button.exit-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 0.5em;
+  width: 75%;
+  padding: 3%;
+  margin: 10%;
+}
+
+button.exit-button:focus {
+  outline: 0;
+}
+
+button.exit-button:hover {
+  background-color: white;
+  border: 2px solid white;
+  color: black;
+  font-size: 0.5em;
+  width: 75%;
+  padding: 3%;
+  margin: 10%;
+}
+
+input {
+  border: 0px;
+  border-bottom: 4px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+  cursor: vertical-text;
+  margin-top: 10%;
+  width: 84%;
+  line-height: 1em;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.landing-buttons {
+  display: absolute;
+  margin: 8%;
+  font-size: 1em;
+  width: 33.3333333%;
+  padding: 3%;
+}
+
 .game-board {
   /*border: 1px solid deeppink;*/
+  position: relative;
   max-width: 390px;
   height: 390px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 3%;
+  z-index: 1;
+}
+
+main {
+  display: none;
 }
 
 button.box {
@@ -34,6 +109,11 @@ button.box {
 
 button:focus {
   outline: 0;
+}
+
+button.box:active {
+  /*transform: scale(0.9, 0.9);*/
+  transition: font .9s ease-in;
 }
 
 .box {
@@ -120,7 +200,8 @@ header {
   display: inline-block;
   width: 390px;
   margin-top: 1.5%;
-  font-size: 2.2em;
+  font-size: 1.5em;
+  line-height: 2.2em;
 }
 
 .header-buttons {
@@ -128,6 +209,10 @@ header {
 }
 
 .reset-button {
+  width: 10%;
+}
+
+.exit-button {
   width: 10%;
 }
 

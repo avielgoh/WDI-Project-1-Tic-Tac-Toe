@@ -5,22 +5,35 @@
   <title>Tic Tac Toe</title>
   <!-- <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/foundation.css"> -->
+  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="css/app.css">
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
+  <div class="landing">
+    <div class="landing-box">
+      <input type="text" class="name-input" id="player1-name" placeholder="Player 1"> <br>
+      <input type="text" class="name-input" id="player2-name" placeholder="Player 2"> <br>
+      <button class="landing-buttons submit">Submit</button>
+      <button class="landing-buttons skip">Skip</button>
+    </div>
+  </div>
+
+<main>
   <header>
     <div class="header-buttons reset-button">
       <button class="reset-game"></button>
     </div>
     <div class="header-buttons display">
-      <div class="display-message">LET'S PLAY!</div>
+      <div class="display-message">Let's play!</div>
     </div>
     <div class="header-buttons reset-button">
-      <button class="reset-game"></button>
+      <button class="reset-game" id="exit"></button>
     </div>
   </header>
+
+
 
 
   <!-- <div class="row game-board">
@@ -76,7 +89,7 @@
   </div>
 
   <div class="notifications">
-    <div class="players player1">PLAYER 1
+    <div class="players player1"><span id="p1Name">PLAYER 1</span>
       <div class="player1-score scores"></div>
     </div>
 
@@ -84,10 +97,18 @@
       <div class="tie-score scores"></div>
     </div>
 
-    <div class="players player2">PLAYER 2
+    <div class="players player2"><span id="p2Name">PLAYER 2</span>
       <div class="player2-score scores"></div>
     </div>
   </div>
+</main>
+
+<div class="exit">
+  <div class="exit-box">
+    <p>Thanks for playing!</p>
+    <button class="exit-button replay">PLAY AGAIN?</button>
+  </div>
+</div>
 
   <script src="js/jquery.js"></script>
   <script src="js/underscore.js"></script>
