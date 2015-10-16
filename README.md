@@ -65,9 +65,10 @@ ________________________________________________________________________________
 
 #### Links
 
+Play the game - [http://avielgoh.github.io/WDI-Project-1-Tic-Tac-Toe](http://avielgoh.github.io/WDI-Project-1-Tic-Tac-Toe/)
 
 #### Acknowledgements
 
-Thanks to [Matt](https://github.com/mattswann), [DT](https://github.com/epoch) and the WDI4 appleandriods class for all your assistance and guidance.
+Thanks to [Matt](https://github.com/mattswann), [DT](https://github.com/epoch) and the WDI4 appleandriods class for all your assistance and guidance!
 
 *This project was undertaken as part of the General Assembly WDI course I undertook in 2015.*
