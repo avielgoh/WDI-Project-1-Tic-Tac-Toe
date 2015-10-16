@@ -17,7 +17,7 @@ var startGame = function() {
 
   $('.display-message').html('LET\'S PLAY!');
 
-  if ($('#player1-name').val() !== "" &&  $('#player2-name').val() !== "") {
+  if ($('#player1-name').val() !== "" &&  $('#player2-name').val() !== "") { // update player names
     player1Name = $('#player1-name').val();
     $('#p1Name').html(player1Name);
     player2Name = $('#player2-name').val();
@@ -26,17 +26,20 @@ var startGame = function() {
     return;
   }
 
-  // display main page, remove landing box
+  // display main elements, remove landing box and footer
   $('.landing').css('display', 'none');
   $('main').css('display', 'inherit');
+  $('footer').css('display', 'none');
 };
 
-$('.submit').on('click', startGame); // start game after use inputs custom names
+$('.submit').on('click', startGame); // start game after user inputs custom names
 
-$('.skip').on('click', function() { // user can choose not to use custom name
+$('.skip').on('click', function() { // user can choose not to use custom name - default to Player 1 and Player 2
   $('.landing').css('display', 'none');
   $('main').css('display', 'inherit');
+  $('footer').css('display', 'none');
 });
+
 
 // --- GAME BOARD ---
 var board = {
@@ -61,13 +64,13 @@ var diagonal = function() { // diagonal() creates arrays for the left-right and 
   board.diagR = [board.rowA[2], board.rowB[1], board.rowC[0]];
 };
 
+
 // --- PLAYER INPUT ---
 var playerInput = function() {
 
-  // display text on clicked-button based on inputType ('X' or 'O')
-  $(event.target).text(inputType);
+  $(event.target).text(inputType); // display text on clicked-button based on inputType ('X' or 'O')
 
-  // get index / position of clicked-button and push inputType ('X' or 'O') into board.row array
+  // get index / position of clicked-button and push/splice inputType ('X' or 'O') into board.row array
   if ($(event.target).data('index') <= 2) {
     board.rowA.splice($(event.target).data('index'), 1, inputType);
   } else if ($(event.target).data('index') <= 5) {
@@ -96,7 +99,7 @@ var checkBoard = function() {
 
   $('.display-message').html(inputType + ' turn'); // update message based on which player is next
 
-  // checks each array (rows, columns and diagonals) in the board object against the boardWinX and boardWinO arrays to identify if there is a winner
+  // checks each array (rows, columns and diagonals) in the board object against the boardWinX and boardWinO arrays to identify if there is a winning configuration
   _.each(boardKeys, function(key, index) {
     if (_.difference(eval('board.' + key), boardXWin).length === 0) { // blank array indicates winner
       winningSet = key;
@@ -141,21 +144,33 @@ var clearBoard = function() { // clears the board for the next round
   $('.box').text(""); // clear button values
   $('.box').prop('disabled', false); // re-enable all buttons
   $('.display-message').html('ROUND ' + (ties + player1Score + player2Score + 1) + '!');
+  $('.game-board').css({ // clears css animations
+    'animation-name': 'none',
+    'animation-duration': 'none',
+    'animation-iteration-count': 'none',
+    'animation-timing-function': 'none'
+  });
 };
 
-var resetGame = function() { // clears the game if player presses reset button
+var resetGame = function() { // resets all settings in the game - returns user to the landing box
   clearBoard();
   player1Name = 'Player 1';
   player2Name = 'Player 2';
   $('#p1Name').html(player1Name);
   $('#p2Name').html(player2Name);
+  $('#player1-name').val('');
+  $('#player2-name').val('');
   ties = 0;
   player1Score = 0;
   player2Score = 0;
   $('.scores').html('');
+
+  // display landing box, remove main elements
   $('.notifications').css('display', 'inherit');
   $('main').css('display', 'none');
   $('.landing').css('display', 'inherit');
+  $('footer').css('display', 'inherit');
+  $('.display-message').html('LET\'S PLAY!');
 
   // reset various CSS that were changed during crazy mode
   $('.game-board').css({
@@ -166,13 +181,13 @@ var resetGame = function() { // clears the game if player presses reset button
   });
   $('.game-board').css('animation', 'zoomBoard 1s linear 0s 1');
   $('body').css({
-    'background-image': 'url(http://images2.alphacoders.com/594/594767.jpg)',
+    'background-image': 'url(background.jpg)',
     'animation-name': 'none',
     'animation-duration': 'none',
     'animation-iteration-count': 'none',
     'animation-timing-function': 'none'
   });
-  $('button.box').css('color', 'rgb(160, 200, 249)');
+  $('button.box').css('color', 'rgb(255, 82, 118)');
 };
 
 $('#reset').on('click', resetGame); // calls resetGame() when button is clicked
@@ -185,7 +200,14 @@ var winnerX = function() {
   player1Score += 1;
   console.log(player1Score);
   $('.player1-score').html(player1Score);
-  setTimeout(clearBoard, 2000);
+
+  $('.game-board').css({ // spins the board clockwise if the winner is X
+    'animation-name': 'crazySpin',
+    'animation-duration': '1s',
+    'animation-iteration-count': 'twice',
+    'animation-timing-function': 'linear'
+  });
+  setTimeout(clearBoard, 2000); // calls clearBoard() after 2 seconds
 }
 
 var winnerO = function() {
@@ -193,6 +215,13 @@ var winnerO = function() {
   $('.display-message').html(player2Name + ' wins!');
   player2Score += 1;
   $('.player2-score').html(player2Score);
+
+  $('.game-board').css({ // spins the board anti-clockwise if the winner is X
+    'animation-name': 'crazySpinReverse',
+    'animation-duration': '1s',
+    'animation-iteration-count': 'twice',
+    'animation-timing-function': 'linear'
+  });
   setTimeout(clearBoard, 2000);
 }
 
@@ -201,16 +230,24 @@ var winnerTie = function() {
   $('.display-message').html('It\'s a draw!');
   ties += 1;
   $('.tie-score').html(ties);
+
+  $('.game-board').css({ // zooms board out if the game is a draw
+    'animation-name': 'zoomBoardReverse',
+    'animation-duration': '2.2s',
+    'animation-iteration-count': 'once',
+    'animation-timing-function': 'linear'
+  });
   setTimeout(clearBoard, 2000);
 }
 
+
 // --- END & REPLAY GAME  ---
 var exitGame = function() {
-  if (player1Score === player2Score) {
+  if (player1Score === player2Score && player1Score !== 0 && player2Score !== 0) {
     $('.winner-message').html('GAME WAS A TIE!');
   } else if (player1Score > player2Score) {
     $('.winner-message').html(player1Name + ' WON!');
-  } else {
+  } else if (player1Score < player2Score) {
     $('.winner-message').html(player2Name + ' WON!');
   };
 
@@ -225,22 +262,27 @@ var crazyGame = function() {
   $('.game-over').css('display', 'none');
   $('.landing').css('display', 'none');
   $('main').css('display', 'inherit');
-  $('.game-board').css({
+
+  $('.game-board').css({ // animation spins the board
     'animation-name': 'crazySpin',
     'animation-duration': '1.5s',
     'animation-iteration-count': 'infinite',
     'animation-timing-function': 'linear'
   });
-  $('body').css({
+
+  $('body').css({ // animation changes background color
     'background-image': 'none',
     'animation-name': 'colorChangeBG',
-    'animation-duration': '3s',
+    'animation-duration': '4s',
     'animation-iteration-count': 'infinite',
     'animation-timing-function': 'linear'
   });
+
+  // various css settings
   $('button.box').css('color', 'white');
   $('.notifications').css('display', 'none');
   $('.display-message').html('CRAZY MODE!');
+  $('footer').css('display', 'none');
 }
 
 $('.crazy-button').on('click', crazyGame); // user can play game in crazy mode
