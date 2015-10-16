@@ -1,12 +1,17 @@
+/*** PAGE DISPLAY ***/
 * {
   box-sizing: border-box;
 }
 
+html {
+   min-height: 100%;
+}
+
 body {
-  /*background-color: black;*/
-  background-image: url(http://images2.alphacoders.com/594/594767.jpg);
-  background-position: center;
+  background-image: url(../background.jpg);
+  background-position: bottom;
   background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   text-align: center;
   max-width: 95%;
@@ -22,7 +27,7 @@ body {
   border-radius: 50%;
   height: 500px;
   max-width: 500px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);;
   display: inherit;
   margin-right: auto;
   margin-left: auto;
@@ -32,28 +37,13 @@ body {
   animation-duration: 8s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;*/
-
-}
-
-@keyframes colorChangeBordersThick {
-  0%  {border: 8px solid white;}
-  5%  {border: 8px solid rgb(128, 201, 220);}
-  15%  {border: 8px solid rgb(115, 171, 228);}
-  25%  {border: 8px solid rgb(254, 231, 138);}
-  35%  {border: 8px solid rgb(230, 167, 56);}
-  45%  {border: 8px solid rgb(107, 181, 94);}
-  65%  {border: 8px solid rgb(230, 167, 56);}
-  75%  {border: 8px solid rgb(254, 231, 138);}
-  85%  {border: 8px solid rgb(115, 171, 228);}
-  95%  {border: 8px solid rgb(128, 201, 220);}
-  100% {border: 8px solid white;}
 }
 
 input {
   border: 0;
   border-bottom: 4px solid white;
   background-color: transparent;
-  color: rgb(21, 200, 209);
+  color: white;
   font-size: 2.5em;
   cursor: vertical-text;
   text-align: center;
@@ -61,6 +51,10 @@ input {
   width: 60%;
   line-height: 1em;
   font-family: 'Quicksand', sans-serif;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 input#player2-name {
@@ -91,7 +85,7 @@ input:focus {
   height: 100px;
   max-width: 100px;
   background-color: white;
-  color: rgb(160, 200, 249);
+  color: rgb(255, 82, 118);
   font-family: 'Quicksand', sans-serif;
   margin-top: 10%;
   font-size: 1.2em;
@@ -120,37 +114,13 @@ main {
   animation: zoomBoard 1s linear 0s 1;
 }
 
-
-@keyframes zoomBoard {
-  from {transform: scale(0.3);}
-}
-
-@keyframes crazySpin {
-  from {transform:rotate(0deg);}
-   to {transform:rotate(360deg);}
-}
-
-@keyframes crazyBorders {
-  0%  {border: 4px solid white;}
-  5%  {border: 4px solid rgb(128, 201, 220);}
-  15%  {border: 4px solid rgb(115, 171, 228);}
-  25%  {border: 4px solid rgb(254, 231, 138);}
-  35%  {border: 4px solid rgb(230, 167, 56);}
-  45%  {border: 4px solid rgb(107, 181, 94);}
-  65%  {border: 4px solid rgb(230, 167, 56);}
-  75%  {border: 4px solid rgb(254, 231, 138);}
-  85%  {border: 4px solid rgb(115, 171, 228);}
-  95%  {border: 4px solid rgb(128, 201, 220);}
-  100% {border: 4px solid white;}
-}
-
 button.box {
   float: left;
   display: inline-block;
   border: 0;
   padding: 0;
   background-color: transparent;
-  color: rgb(160, 200, 249);
+  color: rgb(255, 82, 118);
   font-size: 7em;
   font-family: 'Quicksand', sans-serif;
 }
@@ -212,8 +182,8 @@ button:focus {
   border-left: 2px solid white;
 }
 
-/*** HEADER DISPLAY ***/
 
+/*** HEADER DISPLAY ***/
 header {
   border: 1px solid transparent;
   max-width: 423px;
@@ -234,7 +204,7 @@ header {
   width: 10%;
   height: 42px;
   border: 2px solid white;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
 }
 
@@ -246,33 +216,20 @@ header {
   color: white;
   border-radius: 50%;
   animation-name: colorChangeBG;
-  animation-duration: 8s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-}
-
-@keyframes colorChangeBG {
-  0%  {background-color: white;}
-  2%  {background-color: rgb(128, 201, 220);}
-  15%  {background-color: rgb(115, 171, 228);}
-  25%  {background-color: rgb(254, 231, 138);}
-  35%  {background-color: rgb(230, 167, 56);}
-  45%  {background-color: rgb(107, 181, 94);}
-  65%  {background-color: rgb(230, 167, 56);}
-  75%  {background-color: rgb(254, 231, 138);}
-  85%  {background-color: rgb(115, 171, 228);}
-  98%  {background-color: rgb(128, 201, 220);}
-  100% {background-color: white;}
 }
 
 .display {
   width: 80%;
   text-transform: uppercase;
+  font-size: 1.6em;
 }
 
-.fa-eject {
+.fa-bomb {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 6px;
   margin-right: 1px;
   vertical-align: top;
 }
@@ -283,6 +240,7 @@ header {
   margin-left: 2px;
   vertical-align: top;
 }
+
 
 /*** NOTIFICATIONS DISPLAY ***/
 .notifications {
@@ -309,9 +267,10 @@ header {
 
 .scores {
   font-size: 1.8em;
-  color: rgb(160, 200, 249);
+  color: rgb(255, 82, 118);
   font-weight: bold;
 }
+
 
 /*** GAME OVER DISPLAY ***/
 .game-over {
@@ -319,13 +278,14 @@ header {
   border-radius: 50%;
   height: 500px;
   max-width: 500px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);;
   display: none;
   margin-right: auto;
   margin-left: auto;
   margin-top: 6%;
   font-family: 'Quicksand', sans-serif;
 }
+
 .thanks-message {
   font-size: 1.5em;
   text-align: center;
@@ -356,7 +316,7 @@ header {
   font-size: 1.8em;
   padding: 3%;
   animation-name: crazySpin;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -367,13 +327,57 @@ header {
   height: 180px;
   max-width: 180px;
   background-color: white;
-  color: rgb(160, 200, 249);
+  color: rgb(255, 82, 118);
   font-family: 'Quicksand', sans-serif;
   margin-top: 5%;
   font-size: 1.8em;
   padding: 3%;
-  animation-name: crazySpin;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  font-weight: 600;
+  animation: crazySpin 2s linear 0s infinite;
+}
+
+
+/*** FOOTER DISPLAY ***/
+footer {
+  position: fixed;
+  bottom: 2%;
+  right: 40%;
+  left: 40%;
+  font-size: 8px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+/*** ANIMATIONS ***/
+@keyframes zoomBoard {
+  from {transform: scale(0.3);}
+}
+
+@keyframes zoomBoardReverse {
+  from {transform: scale(1);}
+  to {transform: scale(0.3)}
+}
+
+@keyframes crazySpin {
+  from {transform: rotate(0deg);}
+   to {transform: rotate(360deg);}
+}
+
+@keyframes crazySpinReverse {
+  from {transform: rotate(0deg);}
+   to {transform: rotate(-360deg);}
+}
+
+@keyframes colorChangeBG {
+  0%  {background-color: rgb(255, 84, 104);}
+  10%  {background-color: rgb(212, 120, 165);}
+  20%  {background-color: rgb(130, 63, 120);}
+  30%  {background-color: rgb(83, 208, 200);}
+  40%  {background-color: rgb(34, 147, 184);}
+  50%  {background-color: rgb(123, 196, 182);}
+  60%  {background-color: rgb(34, 147, 184);}
+  70%  {background-color: rgb(83, 208, 200);}
+  80%  {background-color: rgb(130, 63, 120);}
+  90%  {background-color: rgb(212, 120, 165);}
+  100% {background-color: rgb(255, 84, 104);}
 }
