@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tic Tac Toe</title>
+  <title>Tic Tac Toe by AG</title>
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/app.css">
   <link href='https://fonts.googleapis.com/css?family=Quicksand:700,400' rel='stylesheet' type='text/css'>
@@ -20,48 +20,47 @@
     </div>
   </div>
 
-<main>
-  <header>
-    <div class="header header-buttons" id="reset">
-      <i class="fa fa-undo"></i>
-    </div>
-    <div class="header display">
-      <div class="display-message">Let's play!</div>
-    </div>
-    <div class="header header-buttons" id="exit">
-      <i class="fa fa-bomb"></i>
-    </div>
-  </header>
+  <main>
+    <header>
+      <div class="header header-buttons" id="reset">
+        <i class="fa fa-undo"></i>
+      </div>
+      <div class="header display">
+        <div class="display-message">Let's play!</div>
+      </div>
+      <div class="header header-buttons" id="exit">
+        <i class="fa fa-bomb"></i>
+      </div>
+    </header>
 
-
-  <div class="game-board">
-    <div class="grid">
-      <button class="box top left" data-index="0" id="0"></button>
-      <button class="box top center" data-index="1" id="1"></button>
-      <button class="box top right" data-index="2" id="2"></button>
-      <button class="box middle left" data-index="3" id="3"></button>
-      <button class="box middle center" data-index="4" id="4"></button>
-      <button class="box middle right" data-index="5" id="5"></button>
-      <button class="box bottom left" data-index="6" id="6"></button>
-      <button class="box bottom center" data-index="7" id="7"></button>
-      <button class="box bottom right" data-index="8" id="8"></button>
-    </div>
-  </div>
-
-  <div class="notifications">
-    <div class="players player1"><span id="p1Name">Player 1</span>
-      <div class="player1-score scores"></div>
+    <div class="game-board">
+      <div class="grid">
+        <button class="box top left" data-index="0"></button>
+        <button class="box top center" data-index="1"></button>
+        <button class="box top right" data-index="2"></button>
+        <button class="box middle left" data-index="3"></button>
+        <button class="box middle center" data-index="4"></button>
+        <button class="box middle right" data-index="5"></button>
+        <button class="box bottom left" data-index="6"></button>
+        <button class="box bottom center" data-index="7"></button>
+        <button class="box bottom right" data-index="8"></button>
+      </div>
     </div>
 
-    <div class="tie">Tie
-      <div class="tie-score scores"></div>
-    </div>
+    <div class="notifications">
+      <div class="players player1"><span id="p1Name">Player 1</span>
+        <div class="player1-score scores">0</div>
+      </div>
 
-    <div class="players player2"><span id="p2Name">Player 2</span>
-      <div class="player2-score scores"></div>
+      <div class="tie">Tie
+        <div class="tie-score scores">0</div>
+      </div>
+
+      <div class="players player2"><span id="p2Name">Player 2</span>
+        <div class="player2-score scores">0</div>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
   <div class="game-over">
     <div class="exit-box">
@@ -72,8 +71,7 @@
   </div>
 
   <footer>
-    <div>&copy; 2015 Aviel Goh</div>
-    <div>WDI Project 1</div>
+    <div>&copy; 2015 Aviel Goh | A WDI Project</div>
   </footer>
 
   <script src="js/jquery.js"></script>

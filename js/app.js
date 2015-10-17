@@ -12,6 +12,31 @@ var boardOWin = ["O", "O", "O"];
 var winningSet = [];
 
 
+// --- CSS FUNCTIONS ---
+var resetShake = function() {
+  $('.landing').css({
+    'animation': 'none',
+    'transform': 'none',
+    'backface-visibility': 'none',
+    'perspective': 'none'
+  });
+};
+
+var landingToMain = function() { // change display from landing page to main page page
+  $('.landing').css('display', 'none');
+  $('main').css('display', 'inherit');
+  $('footer').css('display', 'none');
+};
+
+var clearGameBoardCSS = function() {
+  $('.game-board').css({
+    'animation-name': 'none',
+    'animation-duration': 'none',
+    'animation-iteration-count': 'none',
+    'animation-timing-function': 'none'
+  });
+};
+
 // --- START GAME ---
 var startGame = function() {
 
@@ -23,22 +48,22 @@ var startGame = function() {
     player2Name = $('#player2-name').val();
     $('#p2Name').html(player2Name);
   } else {
+    $('.landing').css({ // shake box if user clicks submit with no names
+      'animation': 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
+      'transform': 'translate3d(0, 0, 0)',
+      'backface-visibility': 'hidden',
+      'perspective': '1000px'
+    });
+    setTimeout(resetShake, 850);
     return;
   }
 
   // display main elements, remove landing box and footer
-  $('.landing').css('display', 'none');
-  $('main').css('display', 'inherit');
-  $('footer').css('display', 'none');
+  landingToMain();
 };
 
 $('.submit').on('click', startGame); // start game after user inputs custom names
-
-$('.skip').on('click', function() { // user can choose not to use custom name - default to Player 1 and Player 2
-  $('.landing').css('display', 'none');
-  $('main').css('display', 'inherit');
-  $('footer').css('display', 'none');
-});
+$('.skip').on('click', landingToMain); // user can choose not to use custom name - default to Player 1 and Player 2
 
 
 // --- GAME BOARD ---
@@ -144,12 +169,7 @@ var clearBoard = function() { // clears the board for the next round
   $('.box').text(""); // clear button values
   $('.box').prop('disabled', false); // re-enable all buttons
   $('.display-message').html('ROUND ' + (ties + player1Score + player2Score + 1) + '!');
-  $('.game-board').css({ // clears css animations
-    'animation-name': 'none',
-    'animation-duration': 'none',
-    'animation-iteration-count': 'none',
-    'animation-timing-function': 'none'
-  });
+  clearGameBoardCSS();
 };
 
 var resetGame = function() { // resets all settings in the game - returns user to the landing box
@@ -163,7 +183,7 @@ var resetGame = function() { // resets all settings in the game - returns user t
   ties = 0;
   player1Score = 0;
   player2Score = 0;
-  $('.scores').html('');
+  $('.scores').html('0');
 
   // display landing box, remove main elements
   $('.notifications').css('display', 'inherit');
@@ -173,12 +193,7 @@ var resetGame = function() { // resets all settings in the game - returns user t
   $('.display-message').html('LET\'S PLAY!');
 
   // reset various CSS that were changed during crazy mode
-  $('.game-board').css({
-    'animation-name': 'none',
-    'animation-duration': 'none',
-    'animation-iteration-count': 'none',
-    'animation-timing-function': 'none'
-  });
+  clearGameBoardCSS();
   $('.game-board').css('animation', 'zoomBoard 1s linear 0s 1');
   $('body').css({
     'background-image': 'url(background.jpg)',
