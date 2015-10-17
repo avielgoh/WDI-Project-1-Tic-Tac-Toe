@@ -24,15 +24,15 @@ In developing this web application, the biggest problem that I needed to solve w
 ___________________________________________________________________________________
 ##### Board markup
 
-                          diagL          diagR
-                            \             /
-                             [1]  [2]  [3] - rowA
+    diagL          diagR
+      \             /
+       [1]  [2]  [3] - rowA
 
-                             [4]  [5]  [6] - rowB
+       [4]  [5]  [6] - rowB
 
-                             [7]  [8]  [9] - rowC
-                              |    |    |
-                             colA colB colC
+       [7]  [8]  [9] - rowC
+        |    |    |
+       colA colB colC
 ___________________________________________________________________________________
 
 ###### The way that I approached and solved this problem is as follows:
